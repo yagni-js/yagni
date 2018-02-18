@@ -1,6 +1,6 @@
 {
   "name": "@yagni-js/yagni",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Yet another functional library",
   "main": "dist/yagni.cjs.js",
   "module": "dist/yagni.esm.js",
@@ -25,7 +25,7 @@
     "cleanjs"
   ],
   "author": "Yuri Egorov <ysegorov@gmail.com> (https://ysegorov.github.io/)",
-  "license": "UNLICENSE",
+  "license": "Unlicense",
   "bugs": {
     "url": "https://github.com/ysegorov/yagni/issues"
   },
