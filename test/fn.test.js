@@ -118,6 +118,41 @@ describe('resultArr()', function () {
 });
 
 
+describe('fn()', function () {
+
+  it('should call a function', function () {
+
+    const o = {
+      foo: 42
+    };
+
+    const theAnswer = _.fn(_.identity, _.pick('foo'));
+
+    expect(theAnswer(o)).to.equal(42);
+
+  });
+
+});
+
+
+describe('fn2()', function () {
+
+  it('should call a function with two arguments', function () {
+
+    const o = {
+      foo: 'key',
+      baz: 'value'
+    };
+
+    const toObj = _.fn2(_.obj, _.pick('foo'), _.pick('baz'));
+
+    expect(toObj(o)).to.deep.equal({key: 'value'});
+
+  });
+
+});
+
+
 describe('method()', function () {
 
   const resolve = _.method(Promise, 'resolve');
