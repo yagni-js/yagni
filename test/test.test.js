@@ -185,27 +185,22 @@ describe('isFalse()', function () {
 });
 
 
-describe('isEmpty()', function () {
+describe('equals()', function () {
 
-  it('should return true for empty array or null or undefined', function () {
+  const test = _.equals('1');
 
-    expect(_.isEmpty([])).to.be.true;
-    expect(_.isEmpty(null)).to.be.true;
-    expect(_.isEmpty()).to.be.true;
+  it('should return function to be called', function () {
 
-  });
-
-  it('should return true for empty object', function () {
-
-    expect(_.isEmpty({})).to.be.true;
+    expect(test).to.be.a('function');
 
   });
 
-  it('should return false for other values', function () {
+  it('should strictly check for equality', function () {
 
-    expect(_.isEmpty('foo')).to.be.false;
-    expect(_.isEmpty('')).to.be.false;
-    expect(_.isEmpty(0)).to.be.false;
+    expect(test('1')).to.be.true;
+    expect(test(1)).to.be.false;
+    expect(test(true)).to.be.false;
+    expect(test(false)).to.be.false;
 
   });
 

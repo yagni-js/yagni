@@ -90,8 +90,8 @@ describe('result()', function () {
 
     function add2IfDefined(x) { return _.isDefined(x) ? x + 2 : -1; }
 
-    expect(add2IfDefined()).to.equal(-1);
-    expect(add2IfDefined(40)).to.equal(42);
+    expect(_.result(add2IfDefined)).to.equal(-1);
+    expect(_.result(add2IfDefined, 40)).to.equal(42);
 
   });
 
@@ -175,24 +175,28 @@ describe('method()', function () {
 describe('call()', function () {
 
   const o = {
-    addBaz: _.suffix('baz'),
-    foo: 'foo'
+    foo: 'foo',
+    baz: 'baz'
   };
+  const makePrefix = _.pipe([
+    _.pick('foo'),
+    _.prefix
+  ]);
 
-  const mkFooBaz = _.call(_.pick('addBaz'), _.pick('foo'));
-  const mkBarBaz = _.call(_.pick('addBaz'), 'bar');
+  const mkFooBaz = _.call(makePrefix, _.pick('baz'));
+  const mkFooBar = _.call(makePrefix, 'bar');
 
   it('returns function to be called', function () {
 
     expect(mkFooBaz).to.be.a('function');
-    expect(mkBarBaz).to.be.a('function');
+    expect(mkFooBar).to.be.a('function');
 
   });
 
   it('returns called function result', function () {
 
     expect(mkFooBaz(o)).to.equal('foobaz');
-    expect(mkBarBaz(o)).to.equal('barbaz');
+    expect(mkFooBar(o)).to.equal('foobar');
 
   });
 
